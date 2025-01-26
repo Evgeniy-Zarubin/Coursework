@@ -25,16 +25,18 @@ public class Main {
         employees[8] = inventoryManagement;
         employees[9] = branchManager;
 
-//        for (Employee employee: employees) {
-//            System.out.println(employee.toString());
-//        }
-        for (int i = 0; i <employees.length ; i++) {
-            System.out.println(employees[i].toString());
-        }
+        massive(employees);
         sumFot(employees);
         minFot(employees);
         maxFot(employees);
+        sredFot(employees);
         fio(employees);
+    }
+
+    public static void massive(Employee[] employee){
+        for (int i = 0; i <employee.length ; i++) {
+            System.out.println(employee[i].toString());
+        }
     }
 
     public static double sumFot(Employee[] employee){
@@ -44,7 +46,16 @@ public class Main {
 
         }
         System.out.println("Сумма трат за месяц состовляет: " + sum);
-        System.out.println("Средняя зарплата составляет " + sum/employee.length);
+        return sum;
+    }
+
+    public static double sredFot(Employee[] employee){
+        double sum = 0;
+        for (Employee em: employee) {
+            sum = sum + em.getSalary();
+
+        }
+        System.out.println("Cредняя зарплата в месяц состовляет: " + sum/employee.length);
         return sum;
     }
 
