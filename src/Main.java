@@ -1,7 +1,19 @@
 import java.util.Arrays;
-
 public class Main {
+
+    private static Employee[] employees = new Employee[10];
+
     public static void main(String[] args) {
+        fullEmployees();
+        massive(employees);
+        sumFot(employees);
+        minFot(employees);
+        maxFot(employees);
+        sredFot(employees);
+        fio(employees);
+    }
+
+    public static void fullEmployees(){
         Employee manager = new Employee("Зарубин Евгений Викторович", 1, 125000);
         Employee regionManager = new Employee("Волков Александр Ларионович", 1, 230000);
         Employee director = new Employee("Соловьёв Владимир Леонидович", 2, 321000);
@@ -13,7 +25,6 @@ public class Main {
         Employee inventoryManagement = new Employee("Клокова Валерия Олеговна", 4, 90000);
         Employee branchManager = new Employee("Войцехович Альберт Викторович", 2, 220000);
 
-        Employee[] employees = new Employee[10];
         employees[0] = manager;
         employees[1] = regionManager;
         employees[2] = director;
@@ -24,45 +35,33 @@ public class Main {
         employees[7] = salesAgent;
         employees[8] = inventoryManagement;
         employees[9] = branchManager;
-
-        massive(employees);
-        sumFot(employees);
-        minFot(employees);
-        maxFot(employees);
-        sredFot(employees);
-        fio(employees);
     }
 
-    public static void massive(Employee[] employee){
-        for (int i = 0; i <employee.length ; i++) {
+    public static void massive(Employee[] employee) {
+        for (int i = 0; i < employee.length; i++) {
             System.out.println(employee[i].toString());
         }
     }
 
-    public static double sumFot(Employee[] employee){
+    public static double sumFot(Employee[] employee) {
         double sum = 0;
-        for (Employee em: employee) {
+        for (Employee em : employee) {
             sum = sum + em.getSalary();
-
         }
-        System.out.println("Сумма трат за месяц состовляет: " + sum);
+        System.out.println("Сумма трат за месяц составляет: " + sum);
         return sum;
     }
 
-    public static double sredFot(Employee[] employee){
-        double sum = 0;
-        for (Employee em: employee) {
-            sum = sum + em.getSalary();
-
-        }
-        System.out.println("Cредняя зарплата в месяц состовляет: " + sum/employee.length);
-        return sum;
+    public static double sredFot(Employee[] employee) {
+        double avarage = sumFot(employee) / employee.length;
+        System.out.println("Средняя зарплата в месяц составляет: " + avarage);
+        return avarage;
     }
 
-    public static String minFot (Employee[] employee){
+    public static String minFot(Employee[] employee) {
         double minzp = Integer.MAX_VALUE;
         String fullName = "";
-        for (Employee em: employee){
+        for (Employee em : employee) {
             if (minzp >= em.getSalary()) {
                 minzp = em.getSalary();
                 fullName = em.getFullName();
@@ -73,10 +72,10 @@ public class Main {
         return fullName + minzp;
     }
 
-    public static String maxFot (Employee[] employee){
+    public static String maxFot(Employee[] employee) {
         double maxzp = 0;
         String fullName = "";
-        for (Employee em: employee){
+        for (Employee em : employee) {
             if (maxzp < em.getSalary()) {
                 maxzp = em.getSalary();
                 fullName = em.getFullName();
@@ -87,8 +86,8 @@ public class Main {
         return fullName + maxzp;
     }
 
-    public static void fio (Employee[] employee){
-        for (Employee em: employee){
+    public static void fio(Employee[] employee) {
+        for (Employee em : employee) {
             System.out.println(em.getFullName());
         }
     }

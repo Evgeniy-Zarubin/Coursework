@@ -20,11 +20,6 @@ public class Employee {
         return fullName;
     }
 
-    public void setFullname(String fullName) {
-        this.fullName = fullName;
-    }
-
-
     public int getDepartment() {
         return department;
     }
